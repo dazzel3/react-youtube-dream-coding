@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Videos from './components/Videos';
-import VideoDetail from './components/VideoDetail';
-import NotFound from './components/NotFound';
+import Videos from './pages/Videos';
+import VideoDetail from './pages/VideoDetail';
+import NotFound from './pages/NotFound';
 
 const router = createBrowserRouter([
   {
