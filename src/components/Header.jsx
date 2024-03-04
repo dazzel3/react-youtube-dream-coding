@@ -18,20 +18,20 @@ export default function Header() {
   useEffect(() => setText(keyword || ''), [keyword]);
 
   return (
-    <header>
-      <Link to='/'>
-        <h1>youtube</h1>
+    <header className='w-full flex p-4 text-l border-b'>
+      <Link className='p-2' to='/'>
+        <img className='w-32' src='/images/youtube.png' alt='youtube' />
       </Link>
-      <form onSubmit={handleSubmit}>
+      <form className='w-full flex justify-center' onSubmit={handleSubmit}>
         <input
-          className='text-sm font-medium text-gray-900 border-solid border-2 border-indigo-600 rounded-md'
+          className='w-2/5 bg-white text-gray-800 px-3 rounded-l-3xl border border-stone-300'
           type='text'
           value={text}
           placeholder='Search...'
           onChange={handleChange}
         />
-        <button>
-          <CiSearch />
+        <button className='p-2.5 pl-3.5 bg-gray-200 rounded-r-3xl border-y border-r border-stone-300'>
+          <CiSearch color='grey' size={23} />
         </button>
       </form>
     </header>
