@@ -53,4 +53,18 @@ export default class Youtube {
       })
       .then((res) => res.data.items[0]);
   }
+
+  async related(id) {
+    return this.apiClient
+      .related({
+        params: {
+          channelId: id,
+          part: 'snippet',
+          type: 'video',
+          maxResults: 25,
+        },
+      })
+      .then((res) => res.data.items)
+      .then((items) => items.map((item) => ({ ...item, id: item.id.videoId })));
+  }
 }
