@@ -16,8 +16,9 @@ export default class Youtube {
           q: keyword,
         },
       })
-      .then((res) => res.data.items)
-      .then((items) => items.map((item) => ({ ...item, id: item.id.videoId })));
+      .then((res) =>
+        res.data.items.map((item) => ({ ...item, id: item.id.videoId }))
+      );
   }
 
   async #hotTrend() {
@@ -43,7 +44,7 @@ export default class Youtube {
       .then((res) => res.data.items[0]);
   }
 
-  async channel(id) {
+  async channelImgUrl(id) {
     return this.apiClient
       .channel({
         params: {
@@ -51,10 +52,10 @@ export default class Youtube {
           part: 'snippet',
         },
       })
-      .then((res) => res.data.items[0]);
+      .then((res) => res.data.items[0].snippet.thumbnails.default.url);
   }
 
-  async related(id) {
+  async relatedVideos(id) {
     return this.apiClient
       .related({
         params: {
@@ -64,7 +65,8 @@ export default class Youtube {
           maxResults: 25,
         },
       })
-      .then((res) => res.data.items)
-      .then((items) => items.map((item) => ({ ...item, id: item.id.videoId })));
+      .then((res) =>
+        res.data.items.map((item) => ({ ...item, id: item.id.videoId }))
+      );
   }
 }

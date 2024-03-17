@@ -1,25 +1,26 @@
 import React from 'react';
 import { useYoutubeApi } from '../context/YoutubeApiContext';
 import { useQuery } from '@tanstack/react-query';
+import VideoCard from './VideoCard';
 
 export default function ReleatedVideos({ id }) {
   const { youtube } = useYoutubeApi();
   const {
-    data: related,
+    data: videos,
     isLoading,
     error,
   } = useQuery({
     queryKey: ['related', id],
-    queryFn: async () => youtube.related(id),
+    queryFn: async () => youtube.relatedVideos(id),
   });
   return (
     <>
       {isLoading && <p>Loading...</p>}
       {error && <p>Something is wrong 😬</p>}
-      {related && (
+      {videos && (
         <ul>
-          {related.map((item) => (
-            <li key={item.id}>{item.id}</li>
+          {videos.map((video) => (
+            <VideoCard key={video.id} video={video} />
           ))}
         </ul>
       )}

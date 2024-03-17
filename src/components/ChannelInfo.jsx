@@ -4,15 +4,13 @@ import { useYoutubeApi } from '../context/YoutubeApiContext';
 
 export default function ChannelInfo({ id, name }) {
   const { youtube } = useYoutubeApi();
-  const { data: channel } = useQuery({
+  const { data: url } = useQuery({
     queryKey: ['channel', id],
-    queryFn: async () => youtube.channel(id),
+    queryFn: async () => youtube.channelImgUrl(id),
   });
   return (
     <div className='flex'>
-      {channel && (
-        <img src={channel.snippet.thumbnails.default.url} alt={name} />
-      )}
+      {url && <img src={url} alt={name} />}
       <p>{name}</p>
     </div>
   );
