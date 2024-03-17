@@ -57,12 +57,12 @@ export default class Youtube {
 
   async relatedVideos(id) {
     return this.apiClient
-      .related({
+      .search({
         params: {
-          channelId: id,
           part: 'snippet',
-          type: 'video',
           maxResults: 25,
+          type: 'video',
+          channelId: id,
         },
       })
       .then((res) =>
