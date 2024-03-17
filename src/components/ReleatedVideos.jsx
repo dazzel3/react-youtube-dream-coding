@@ -12,6 +12,7 @@ export default function ReleatedVideos({ id }) {
   } = useQuery({
     queryKey: ['related', id],
     queryFn: async () => youtube.relatedVideos(id),
+    staleTime: 1000 * 60 * 5,
   });
   return (
     <>
