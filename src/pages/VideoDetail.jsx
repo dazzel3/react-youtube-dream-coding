@@ -33,7 +33,7 @@ export default function VideoDetail() {
               height='640'
               className='rounded-xl'
               title={detail.snippet.title}
-              src={`http://www.youtube.com/embed/${detail.id}?enablejsapi=1`}
+              src={`https://www.youtube.com/embed/${detail.id}`}
             />
             <div className='py-4'>
               <h2 className='font-bold text-gray-800 text-2xl'>
