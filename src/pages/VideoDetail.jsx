@@ -24,7 +24,7 @@ export default function VideoDetail() {
       {isLoading && <p>Loading...</p>}
       {error && <p>Something is wrong 😬</p>}
       {detail && (
-        <section className='p-4 flex flex-col lg:flex-row'>
+        <section className='p-4 flex flex-col gap-7 lg:flex-row lg:gap-1'>
           <article>
             <iframe
               id='player'
@@ -54,7 +54,7 @@ export default function VideoDetail() {
             </div>
           </article>
           <section>
-            <ReleatedVideos id={detail.id} />
+            <ReleatedVideos id={detail.snippet.channelId} />
           </section>
         </section>
       )}
